@@ -83,6 +83,11 @@
       .site-menu a[aria-current="page"]{
         background:rgba(222,214,204,.58); font-weight:700;
       }
+      .site-menu a.is-disabled{
+        opacity:.38;
+        pointer-events:none;
+        cursor:default;
+      }
       @media(max-width:560px){
         .site-fixed-header{height:40px}
         .site-menu-button{right:max(8px,env(safe-area-inset-right));width:38px;height:34px;font-size:26px}
@@ -99,7 +104,7 @@
         <button class="site-menu-button" type="button" aria-label="メニューを開く" aria-expanded="false">⋯</button>
         <nav class="site-menu" aria-label="サイトメニュー">
           <a href="index.html"${page === "schedule" ? ' aria-current="page"' : ""}>スケジュール</a>
-          <a href="benefits.html"${page === "benefits" ? ' aria-current="page"' : ""}>特典内容早見表</a>
+          <a class="is-disabled" aria-disabled="true" tabindex="-1">特典内容早見表</a>
         </nav>
       </div>`;
     document.body.prepend(header);
