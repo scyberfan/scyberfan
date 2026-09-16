@@ -631,6 +631,129 @@ header .official-summary{
 .cd-controls.is-paired .stage3-controls{display:flex!important}
 </style>
 
+
+<style>
+/* ===== BENEFITS V15 : STEP CONTROLS ===== */
+
+/* 旧「2個目のもっと表示する／閉じる」操作は使わない */
+#stage3Controls,
+#cdStage3Controls{
+  display:none !important;
+}
+
+/* 操作列 */
+.benefits-controls-row,
+.cd-controls{
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  gap:10px !important;
+  width:100% !important;
+  margin:10px 0 18px !important;
+}
+
+/* 左＝もっと表示する / 右＝閉じる */
+.benefits-controls-row .benefits-more-wrap,
+.cd-controls .benefits-more-wrap{
+  width:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+
+/* 両ボタンは完全に同じ見た目 */
+.benefits-controls-row .benefits-more-btn,
+.cd-controls .benefits-more-btn,
+.step-close-btn{
+  box-sizing:border-box !important;
+  width:142px !important;
+  min-width:0 !important;
+  min-height:42px !important;
+  padding:8px 12px !important;
+  margin:0 !important;
+  border:1px solid rgba(116,101,90,.25) !important;
+  border-radius:999px !important;
+  background:rgba(250,247,242,.88) !important;
+  color:#756a62 !important;
+  box-shadow:0 3px 10px rgba(68,55,46,.05) !important;
+  font:inherit !important;
+  font-size:10px !important;
+  line-height:1.2 !important;
+  white-space:nowrap !important;
+}
+
+/* 閉じるは右。初期状態では非表示 */
+.step-close-wrap{display:none}
+.benefits-controls-row.has-open-stage .step-close-wrap,
+.cd-controls.has-open-stage .step-close-wrap{
+  display:flex !important;
+}
+
+/* 最終段階では「もっと表示する」は消して閉じる1個だけ右側に残す */
+.benefits-controls-row.is-final .primary-more-wrap,
+.cd-controls.is-final .primary-more-wrap{
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+
+@media(max-width:380px){
+  .benefits-controls-row .benefits-more-btn,
+  .cd-controls .benefits-more-btn,
+  .step-close-btn{
+    width:128px !important;
+    padding:8px 9px !important;
+    font-size:9.5px !important;
+  }
+}
+</style>
+
+
+<style>
+/* ===== BENEFITS V16 : 3-STATE CONTROL VISIBILITY ===== */
+
+/* 基本：操作列は中央 */
+.benefits-controls-row,
+.cd-controls{
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  gap:10px !important;
+}
+
+/* 初期：もっと表示するのみ。閉じるは非表示 */
+.benefits-controls-row .step-close-wrap,
+.cd-controls .step-close-wrap{
+  display:none !important;
+}
+.benefits-controls-row .primary-more-wrap,
+.cd-controls .primary-more-wrap{
+  display:flex !important;
+  visibility:visible !important;
+  pointer-events:auto !important;
+}
+
+/* 中間：もっと表示する＋閉じる */
+.benefits-controls-row.has-open-stage:not(.is-final) .step-close-wrap,
+.cd-controls.has-open-stage:not(.is-final) .step-close-wrap{
+  display:flex !important;
+}
+
+/* 最終：もっと表示するを完全に消し、閉じるだけ表示 */
+.benefits-controls-row.is-final .primary-more-wrap,
+.cd-controls.is-final .primary-more-wrap{
+  display:none !important;
+}
+.benefits-controls-row.is-final .step-close-wrap,
+.cd-controls.is-final .step-close-wrap{
+  display:flex !important;
+}
+
+/* 旧stage3操作は常に使用しない */
+#stage3Controls,
+#cdStage3Controls{
+  display:none !important;
+}
+</style>
+
 </head>
 <body data-page="benefits"><main>
 <header class="hero">
@@ -669,7 +792,7 @@ header .official-summary{
     </table>
   </div>
   <div class="benefits-controls-row">
-    <div class="benefits-more-wrap" id="stage2Controls">
+    <div class="benefits-more-wrap primary-more-wrap" id="stage2Controls">
       <button type="button" class="benefits-more-btn" id="showStage2Btn" aria-expanded="false">
         もっと表示する <span aria-hidden="true">⌄</span>
       </button>
@@ -678,6 +801,9 @@ header .official-summary{
       <button type="button" class="benefits-more-btn benefits-more-secondary" id="showStage3Btn" aria-expanded="false">
         もっと表示する <span aria-hidden="true">⌄</span>
       </button>
+    </div>
+    <div class="benefits-more-wrap step-close-wrap">
+      <button type="button" class="step-close-btn" id="ticketCloseBtn">閉じる <span aria-hidden="true">⌃</span></button>
     </div>
   </div>
   <p class="table-footnote">色付きの行は、CDを5枚単位で購入した場合の目安です。</p>
@@ -692,11 +818,14 @@ header .official-summary{
     </table>
   </div>
   <div class="benefits-controls-row cd-controls">
-    <div class="benefits-more-wrap">
+    <div class="benefits-more-wrap primary-more-wrap">
       <button type="button" class="benefits-more-btn" id="cdStage2Btn">もっと表示する <span aria-hidden="true">⌄</span></button>
     </div>
     <div class="benefits-more-wrap stage3-controls" id="cdStage3Controls">
       <button type="button" class="benefits-more-btn benefits-more-secondary" id="cdStage3Btn">もっと表示する <span aria-hidden="true">⌄</span></button>
+    </div>
+    <div class="benefits-more-wrap step-close-wrap">
+      <button type="button" class="step-close-btn" id="cdCloseBtn">閉じる <span aria-hidden="true">⌃</span></button>
     </div>
   </div>
   <p class="table-footnote">色付きの行は、CDを5枚単位で購入した場合の目安です。</p>
@@ -740,53 +869,6 @@ header .official-summary{
 
 
 
-<script>
-(function(){
-  const table = document.querySelector(".benefits-table");
-  const btn2 = document.getElementById("showStage2Btn");
-  const controls2 = document.getElementById("stage2Controls");
-  const controls3 = document.getElementById("stage3Controls");
-  const btn3 = document.getElementById("showStage3Btn");
-  if(!table || !btn2 || !controls2 || !controls3 || !btn3) return;
-
-  function render(){
-    const stage2 = table.classList.contains("show-stage2");
-    const stage3 = table.classList.contains("show-stage3");
-
-    controls3.classList.toggle("is-visible", stage2);
-
-    btn2.setAttribute("aria-expanded", stage2 ? "true" : "false");
-    btn2.innerHTML = stage2
-      ? '閉じる <span aria-hidden="true">⌃</span>'
-      : 'もっと表示する <span aria-hidden="true">⌄</span>';
-
-    btn3.setAttribute("aria-expanded", stage3 ? "true" : "false");
-    btn3.innerHTML = stage3
-      ? '閉じる <span aria-hidden="true">⌃</span>'
-      : 'もっと表示する <span aria-hidden="true">⌄</span>';
-
-    document.querySelector(".benefits-controls-row")?.classList.toggle("is-paired", stage2);
-  }
-
-  btn2.addEventListener("click", function(){
-    const stage2 = table.classList.contains("show-stage2");
-    if(stage2){
-      table.classList.remove("show-stage2", "show-stage3");
-    }else{
-      table.classList.add("show-stage2");
-    }
-    render();
-  });
-
-  btn3.addEventListener("click", function(){
-    table.classList.toggle("show-stage3");
-    render();
-  });
-
-  render();
-})();
-</script>
-
 <script src="js/events.js"></script>
 <script src="js/common.js"></script>
 
@@ -796,8 +878,10 @@ header .official-summary{
 
 
 
+
 <script>
 document.addEventListener("DOMContentLoaded", function(){
+  /* 表の切り替え */
   const ticketTab=document.getElementById("ticketTab");
   const cdTab=document.getElementById("cdTab");
   const ticketView=document.getElementById("ticketView");
@@ -805,36 +889,55 @@ document.addEventListener("DOMContentLoaded", function(){
 
   function switchView(mode){
     const cd=mode==="cd";
-    ticketView.hidden=cd; cdView.hidden=!cd;
+    ticketView.hidden=cd;
+    cdView.hidden=!cd;
     ticketTab.classList.toggle("is-active",!cd);
     cdTab.classList.toggle("is-active",cd);
     ticketTab.setAttribute("aria-selected",String(!cd));
     cdTab.setAttribute("aria-selected",String(cd));
   }
-  ticketTab.addEventListener("click",()=>switchView("ticket"));
-  cdTab.addEventListener("click",()=>switchView("cd"));
+  ticketTab?.addEventListener("click",()=>switchView("ticket"));
+  cdTab?.addEventListener("click",()=>switchView("cd"));
 
-  const table=cdView.querySelector(".cd-table");
-  const controls=cdView.querySelector(".cd-controls");
-  const b2=document.getElementById("cdStage2Btn");
-  const c3=document.getElementById("cdStage3Controls");
-  const b3=document.getElementById("cdStage3Btn");
+  function setupStepper(table, controls, moreBtn, closeBtn){
+    if(!table || !controls || !moreBtn || !closeBtn) return;
+    let level=0;
 
-  function renderCD(){
-    const s2=table.classList.contains("show-stage2");
-    const s3=table.classList.contains("show-stage3");
-    controls.classList.toggle("is-paired",s2);
-    c3.style.display=s2?"flex":"none";
-    b2.innerHTML=s2?'閉じる <span aria-hidden="true">⌃</span>':'もっと表示する <span aria-hidden="true">⌄</span>';
-    b3.innerHTML=s3?'閉じる <span aria-hidden="true">⌃</span>':'もっと表示する <span aria-hidden="true">⌄</span>';
+    function render(){
+      table.classList.toggle("show-stage2", level>=1);
+      table.classList.toggle("show-stage3", level>=2);
+      controls.classList.toggle("has-open-stage", level>=1);
+      controls.classList.toggle("is-final", level>=2);
+      moreBtn.innerHTML='もっと表示する <span aria-hidden="true">⌄</span>';
+      closeBtn.innerHTML='閉じる <span aria-hidden="true">⌃</span>';
+    }
+
+    moreBtn.addEventListener("click", function(){
+      if(level<2) level++;
+      render();
+    });
+
+    closeBtn.addEventListener("click", function(){
+      if(level>0) level--;   // 一段階だけ閉じる
+      render();
+    });
+
+    render();
   }
-  b2.addEventListener("click",()=>{
-    if(table.classList.contains("show-stage2")) table.classList.remove("show-stage2","show-stage3");
-    else table.classList.add("show-stage2");
-    renderCD();
-  });
-  b3.addEventListener("click",()=>{table.classList.toggle("show-stage3");renderCD();});
-  renderCD();
+
+  setupStepper(
+    ticketView?.querySelector(".benefits-table"),
+    ticketView?.querySelector(".benefits-controls-row"),
+    document.getElementById("showStage2Btn"),
+    document.getElementById("ticketCloseBtn")
+  );
+
+  setupStepper(
+    cdView?.querySelector(".cd-table"),
+    cdView?.querySelector(".cd-controls"),
+    document.getElementById("cdStage2Btn"),
+    document.getElementById("cdCloseBtn")
+  );
 });
 </script>
 
