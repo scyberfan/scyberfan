@@ -589,6 +589,48 @@ header .official-summary{
 }
 </style>
 
+
+<style>
+/* ===== BENEFITS V14 : TICKET / CD VIEW SWITCH ===== */
+.benefits-view-tabs{
+  display:flex; justify-content:center; gap:7px;
+  margin:0 auto 13px; padding:3px;
+  width:min(94%,360px);
+  border:1px solid rgba(116,101,90,.24);
+  border-radius:999px;
+  background:rgba(247,243,238,.60);
+  box-shadow:0 4px 14px rgba(68,55,46,.06);
+}
+.benefits-view-tab{
+  appearance:none; border:0; flex:1;
+  padding:9px 8px; border-radius:999px;
+  background:transparent; color:#756a62;
+  font:inherit; font-size:9px; letter-spacing:.04em;
+  white-space:nowrap;
+}
+.benefits-view-tab.is-active{
+  background:rgba(112,98,88,.88);
+  color:#fffaf5;
+  box-shadow:0 2px 8px rgba(67,54,45,.12);
+}
+.benefits-view[hidden]{display:none!important}
+
+/* CD表の列幅 */
+.cd-table th:nth-child(1),.cd-table td:nth-child(1){width:18%}
+.cd-table th:nth-child(2),.cd-table td:nth-child(2){width:24%}
+.cd-table th:nth-child(3),.cd-table td:nth-child(3){width:22%}
+.cd-table th:nth-child(4),.cd-table td:nth-child(4){width:18%}
+.cd-table th:nth-child(5),.cd-table td:nth-child(5){width:18%}
+.cd-table td:first-child{font-weight:700}
+.cd-table .value-row td:first-child{box-shadow:inset 3px 0 0 rgba(111,96,85,.55)}
+
+.cd-stage2-row,.cd-stage3-row{display:none!important}
+.cd-table.show-stage2 .cd-stage2-row{display:table-row!important}
+.cd-table.show-stage3 .cd-stage3-row{display:table-row!important}
+.cd-controls .stage3-controls{display:none!important}
+.cd-controls.is-paired .stage3-controls{display:flex!important}
+</style>
+
 </head>
 <body data-page="benefits"><main>
 <header class="hero">
@@ -613,6 +655,12 @@ header .official-summary{
     <p class="purchase-example">CD5枚（¥6,000） → 特典券6枚</p>
     <p class="purchase-small"></p>
   </div>
+
+  <div class="benefits-view-tabs" role="tablist" aria-label="早見表の表示切り替え">
+    <button type="button" class="benefits-view-tab is-active" id="ticketTab" role="tab" aria-selected="true">特典券から見る</button>
+    <button type="button" class="benefits-view-tab" id="cdTab" role="tab" aria-selected="false">CD枚数から見る</button>
+  </div>
+  <div class="benefits-view" id="ticketView">
   <div class="table-caption">特典券 早見表</div>
   <div class="benefits-table-scroll">
     <table class="benefits-table">
@@ -633,6 +681,28 @@ header .official-summary{
     </div>
   </div>
   <p class="table-footnote">色付きの行は、CDを5枚単位で購入した場合の目安です。</p>
+  </div>
+
+<div class="benefits-view" id="cdView" hidden>
+  <div class="table-caption">CD枚数 早見表</div>
+  <div class="benefits-table-scroll">
+    <table class="benefits-table cd-table">
+      <thead><tr><th>CD枚数</th><th>金額</th><th>特典券枚数</th><th>写メ枚数</th><th>握手</th></tr></thead>
+      <tbody><tr><td>1枚</td><td>¥1,200</td><td>1枚</td><td>1枚</td><td>0:20</td></tr><tr><td>2枚</td><td>¥2,400</td><td>2枚</td><td>2枚</td><td>0:40</td></tr><tr><td>3枚</td><td>¥3,600</td><td>3枚</td><td>3枚</td><td>1:00</td></tr><tr><td>4枚</td><td>¥4,800</td><td>4枚</td><td>4枚</td><td>1:20</td></tr><tr class="value-row"><td>5枚</td><td>¥6,000</td><td>6枚</td><td>6枚</td><td>2:00</td></tr><tr><td>6枚</td><td>¥7,200</td><td>7枚</td><td>7枚</td><td>2:20</td></tr><tr><td>7枚</td><td>¥8,400</td><td>8枚</td><td>8枚</td><td>2:40</td></tr><tr><td>8枚</td><td>¥9,600</td><td>9枚</td><td>9枚</td><td>3:00</td></tr><tr><td>9枚</td><td>¥10,800</td><td>10枚</td><td>10枚</td><td>3:20</td></tr><tr class="value-row"><td>10枚</td><td>¥12,000</td><td>12枚</td><td>12枚</td><td>4:00</td></tr><tr><td>11枚</td><td>¥13,200</td><td>13枚</td><td>13枚</td><td>4:20</td></tr><tr><td>12枚</td><td>¥14,400</td><td>14枚</td><td>14枚</td><td>4:40</td></tr><tr><td>13枚</td><td>¥15,600</td><td>15枚</td><td>15枚</td><td>5:00</td></tr><tr><td>14枚</td><td>¥16,800</td><td>16枚</td><td>16枚</td><td>5:20</td></tr><tr class="value-row"><td>15枚</td><td>¥18,000</td><td>18枚</td><td>18枚</td><td>6:00</td></tr><tr class="cd-stage2-row"><td>16枚</td><td>¥19,200</td><td>19枚</td><td>19枚</td><td>6:20</td></tr><tr class="cd-stage2-row"><td>17枚</td><td>¥20,400</td><td>20枚</td><td>20枚</td><td>6:40</td></tr><tr class="cd-stage2-row"><td>18枚</td><td>¥21,600</td><td>21枚</td><td>21枚</td><td>7:00</td></tr><tr class="cd-stage2-row"><td>19枚</td><td>¥22,800</td><td>22枚</td><td>22枚</td><td>7:20</td></tr><tr class="cd-stage2-row value-row"><td>20枚</td><td>¥24,000</td><td>24枚</td><td>24枚</td><td>8:00</td></tr><tr class="cd-stage2-row"><td>21枚</td><td>¥25,200</td><td>25枚</td><td>25枚</td><td>8:20</td></tr><tr class="cd-stage2-row"><td>22枚</td><td>¥26,400</td><td>26枚</td><td>26枚</td><td>8:40</td></tr><tr class="cd-stage2-row"><td>23枚</td><td>¥27,600</td><td>27枚</td><td>27枚</td><td>9:00</td></tr><tr class="cd-stage2-row"><td>24枚</td><td>¥28,800</td><td>28枚</td><td>28枚</td><td>9:20</td></tr><tr class="cd-stage2-row value-row"><td>25枚</td><td>¥30,000</td><td>30枚</td><td>30枚</td><td>10:00</td></tr><tr class="cd-stage3-row"><td>26枚</td><td>¥31,200</td><td>31枚</td><td>31枚</td><td>10:20</td></tr><tr class="cd-stage3-row"><td>27枚</td><td>¥32,400</td><td>32枚</td><td>32枚</td><td>10:40</td></tr><tr class="cd-stage3-row"><td>28枚</td><td>¥33,600</td><td>33枚</td><td>33枚</td><td>11:00</td></tr><tr class="cd-stage3-row"><td>29枚</td><td>¥34,800</td><td>34枚</td><td>34枚</td><td>11:20</td></tr><tr class="cd-stage3-row value-row"><td>30枚</td><td>¥36,000</td><td>36枚</td><td>36枚</td><td>12:00</td></tr><tr class="cd-stage3-row"><td>31枚</td><td>¥37,200</td><td>37枚</td><td>37枚</td><td>12:20</td></tr><tr class="cd-stage3-row"><td>32枚</td><td>¥38,400</td><td>38枚</td><td>38枚</td><td>12:40</td></tr><tr class="cd-stage3-row"><td>33枚</td><td>¥39,600</td><td>39枚</td><td>39枚</td><td>13:00</td></tr><tr class="cd-stage3-row"><td>34枚</td><td>¥40,800</td><td>40枚</td><td>40枚</td><td>13:20</td></tr><tr class="cd-stage3-row value-row"><td>35枚</td><td>¥42,000</td><td>42枚</td><td>42枚</td><td>14:00</td></tr><tr class="cd-stage3-row"><td>36枚</td><td>¥43,200</td><td>43枚</td><td>43枚</td><td>14:20</td></tr><tr class="cd-stage3-row"><td>37枚</td><td>¥44,400</td><td>44枚</td><td>44枚</td><td>14:40</td></tr><tr class="cd-stage3-row"><td>38枚</td><td>¥45,600</td><td>45枚</td><td>45枚</td><td>15:00</td></tr><tr class="cd-stage3-row"><td>39枚</td><td>¥46,800</td><td>46枚</td><td>46枚</td><td>15:20</td></tr><tr class="cd-stage3-row value-row"><td>40枚</td><td>¥48,000</td><td>48枚</td><td>48枚</td><td>16:00</td></tr><tr class="cd-stage3-row"><td>41枚</td><td>¥49,200</td><td>49枚</td><td>49枚</td><td>16:20</td></tr><tr class="cd-stage3-row"><td>42枚</td><td>¥50,400</td><td>50枚</td><td>50枚</td><td>16:40</td></tr><tr class="cd-stage3-row"><td>43枚</td><td>¥51,600</td><td>51枚</td><td>51枚</td><td>17:00</td></tr><tr class="cd-stage3-row"><td>44枚</td><td>¥52,800</td><td>52枚</td><td>52枚</td><td>17:20</td></tr><tr class="cd-stage3-row value-row"><td>45枚</td><td>¥54,000</td><td>54枚</td><td>54枚</td><td>18:00</td></tr><tr class="cd-stage3-row"><td>46枚</td><td>¥55,200</td><td>55枚</td><td>55枚</td><td>18:20</td></tr><tr class="cd-stage3-row"><td>47枚</td><td>¥56,400</td><td>56枚</td><td>56枚</td><td>18:40</td></tr><tr class="cd-stage3-row"><td>48枚</td><td>¥57,600</td><td>57枚</td><td>57枚</td><td>19:00</td></tr><tr class="cd-stage3-row"><td>49枚</td><td>¥58,800</td><td>58枚</td><td>58枚</td><td>19:20</td></tr><tr class="cd-stage3-row value-row"><td>50枚</td><td>¥60,000</td><td>60枚</td><td>60枚</td><td>20:00</td></tr></tbody>
+    </table>
+  </div>
+  <div class="benefits-controls-row cd-controls">
+    <div class="benefits-more-wrap">
+      <button type="button" class="benefits-more-btn" id="cdStage2Btn">もっと表示する <span aria-hidden="true">⌄</span></button>
+    </div>
+    <div class="benefits-more-wrap stage3-controls" id="cdStage3Controls">
+      <button type="button" class="benefits-more-btn benefits-more-secondary" id="cdStage3Btn">もっと表示する <span aria-hidden="true">⌄</span></button>
+    </div>
+  </div>
+  <p class="table-footnote">色付きの行は、CDを5枚単位で購入した場合の目安です。</p>
+</div>
+
+
 </section>
 
 <section class="disclaimer">
@@ -724,5 +794,48 @@ header .official-summary{
 
 
 
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const ticketTab=document.getElementById("ticketTab");
+  const cdTab=document.getElementById("cdTab");
+  const ticketView=document.getElementById("ticketView");
+  const cdView=document.getElementById("cdView");
+
+  function switchView(mode){
+    const cd=mode==="cd";
+    ticketView.hidden=cd; cdView.hidden=!cd;
+    ticketTab.classList.toggle("is-active",!cd);
+    cdTab.classList.toggle("is-active",cd);
+    ticketTab.setAttribute("aria-selected",String(!cd));
+    cdTab.setAttribute("aria-selected",String(cd));
+  }
+  ticketTab.addEventListener("click",()=>switchView("ticket"));
+  cdTab.addEventListener("click",()=>switchView("cd"));
+
+  const table=cdView.querySelector(".cd-table");
+  const controls=cdView.querySelector(".cd-controls");
+  const b2=document.getElementById("cdStage2Btn");
+  const c3=document.getElementById("cdStage3Controls");
+  const b3=document.getElementById("cdStage3Btn");
+
+  function renderCD(){
+    const s2=table.classList.contains("show-stage2");
+    const s3=table.classList.contains("show-stage3");
+    controls.classList.toggle("is-paired",s2);
+    c3.style.display=s2?"flex":"none";
+    b2.innerHTML=s2?'閉じる <span aria-hidden="true">⌃</span>':'もっと表示する <span aria-hidden="true">⌄</span>';
+    b3.innerHTML=s3?'閉じる <span aria-hidden="true">⌃</span>':'もっと表示する <span aria-hidden="true">⌄</span>';
+  }
+  b2.addEventListener("click",()=>{
+    if(table.classList.contains("show-stage2")) table.classList.remove("show-stage2","show-stage3");
+    else table.classList.add("show-stage2");
+    renderCD();
+  });
+  b3.addEventListener("click",()=>{table.classList.toggle("show-stage3");renderCD();});
+  renderCD();
+});
+</script>
 
 </body></html>
