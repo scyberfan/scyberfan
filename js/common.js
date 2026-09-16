@@ -36,8 +36,54 @@ function injectHeader(){
  m.addEventListener("click",e=>e.stopPropagation());document.addEventListener("click",close);document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
 }
 
+
+function renderSchedule(){
+  const list=document.getElementById("scheduleList");
+  if(!list)return;
+
+  const now=new Date();
+  let nextIndex=-1;
+  for(let i=0;i<EVENTS.length;i++){
+    const e=EVENTS[i];
+    const valid=(e.sessions||[]).filter(x=>x.start && x.start!=="未定");
+    if(!valid.length) continue;
+    const last=valid.map(x=>new Date(`${e.date}T${x.start}:00+09:00`)).sort((a,b)=>b-a)[0];
+    if(last>=now){nextIndex=i;break;}
+  }
+
+  list.innerHTML=EVENTS.map((e,i)=>{
+    const [y,m,d]=e.date.split("-");
+    const valid=(e.sessions||[]).filter(x=>x.start && x.start!=="未定");
+    const last=valid.length?valid.map(x=>new Date(`${e.date}T${x.start}:00+09:00`)).sort((a,b)=>b-a)[0]:null;
+    const past=last && last<now;
+    const classes=["card",past?"past":"",i===nextIndex?"next":""].filter(Boolean).join(" ");
+    const sessions=(e.sessions||[]).map(x=>`
+      <div class="session">
+        ${x.part?`<span class="part-text">${esc(x.part)}</span>`:""}
+        <b>START ${esc(x.start||"未定")}</b>
+        <span>/ 集合 ${esc(x.meeting||"未定")}</span>
+      </div>`).join("");
+    const content=`
+      <div class="datebox"><small>${esc(y)}.</small><strong>${Number(m)}.${Number(d)}</strong><em class="w-${esc(e.weekday)}">${esc(e.weekday)}</em></div>
+      <div class="body">${sessions}<div class="meta">
+        <div><label>場所</label><p>${esc(e.place||"未定")}</p></div>
+        <div class="sale"><label>販売</label><p>${esc(e.sales||"未定")}</p></div>
+      </div></div>`;
+    return e.url
+      ? `<a class="${classes}" href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">${content}</a>`
+      : `<div class="${classes}">${content}</div>`;
+  }).join("");
+
+  /* 初回表示だけ、トップを見せてから次回公演を中央へスクロール */
+  const next=list.querySelector(".card.next");
+  if(next && !sessionStorage.getItem("zerojuriAutoScrolled")){
+    sessionStorage.setItem("zerojuriAutoScrolled","1");
+    setTimeout(()=>next.scrollIntoView({behavior:"smooth",block:"center"}),450);
+  }
+}
+
 function starts(){const a=[];EVENTS.forEach(e=>e.sessions.forEach(x=>{if(x.start!=="未定"){const d=new Date(`${e.date}T${x.start}:00+09:00`);const [,m,day]=e.date.split("-").map(Number);a.push({d,label:`${m}/${day} ${x.part?x.part+" ":""}${x.start}`})}}));return a.sort((a,b)=>a.d-b.d)}
 function countdown(){const root=document.getElementById("fixedZerojuriCountdown");if(!root)return;const nums=["fcdD","fcdH","fcdM","fcdS"].map(id=>document.getElementById(id)),next=document.getElementById("fcdNext"),list=starts(),pad=n=>String(n).padStart(2,"0");function tick(){const now=Date.now(),n=list.find(x=>x.d.getTime()>now);if(!n){if(next)next.textContent="次回の開催情報は公式案内をご確認ください";return}let s=Math.max(0,Math.floor((n.d-now)/1000)),d=Math.floor(s/86400);s%=86400;let h=Math.floor(s/3600);s%=3600;let m=Math.floor(s/60);s%=60;[d,h,m,s].forEach((v,i)=>nums[i]&&(nums[i].textContent=pad(v)));if(next)next.textContent="NEXT "+n.label}tick();setInterval(tick,1000)}
 
-document.addEventListener("DOMContentLoaded",()=>{injectHeader();countdown()});
+document.addEventListener("DOMContentLoaded",()=>{injectHeader();renderSchedule();countdown()});
 })();
