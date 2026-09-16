@@ -474,6 +474,45 @@ header .official-summary{
 }
 </style>
 
+
+<style>
+/* ===== BENEFITS V12 : COMPACT SIDE-BY-SIDE CONTROLS ===== */
+#stage2Controls.is-paired,
+#stage3Controls.is-paired{
+  display:inline-flex !important;
+  width:auto !important;
+  margin:10px 3px 0 0 !important;
+  padding:0 !important;
+  vertical-align:top !important;
+}
+#stage3Controls.is-paired{
+  margin-right:0 !important;
+}
+
+#stage2Controls.is-paired .benefits-more-btn,
+#stage3Controls.is-paired .benefits-more-btn{
+  width:auto !important;
+  min-width:128px !important;
+  max-width:none !important;
+  min-height:44px !important;
+  padding:9px 16px !important;
+  margin:0 !important;
+  font-size:11px !important;
+  line-height:1.2 !important;
+  white-space:nowrap !important;
+}
+
+/* 画面幅がかなり狭くても2つを横並びに維持 */
+@media(max-width:380px){
+  #stage2Controls.is-paired .benefits-more-btn,
+  #stage3Controls.is-paired .benefits-more-btn{
+    min-width:116px !important;
+    padding:8px 12px !important;
+    font-size:10px !important;
+  }
+}
+</style>
+
 </head>
 <body data-page="benefits"><main>
 <header class="hero">
@@ -641,6 +680,36 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 
   sync();
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const s2=document.getElementById("stage2Controls");
+  const s3=document.getElementById("stage3Controls");
+
+  function isVisible(el){
+    if(!el || el.hidden) return false;
+    const cs=getComputedStyle(el);
+    return cs.display!=="none" && cs.visibility!=="hidden";
+  }
+
+  function forcePair(){
+    const pair=isVisible(s2) && isVisible(s3);
+    if(s2) s2.classList.toggle("is-paired",pair);
+    if(s3) s3.classList.toggle("is-paired",pair);
+  }
+
+  document.addEventListener("click",function(e){
+    if(e.target.closest("#showStage2Btn,#showStage3Btn")){
+      requestAnimationFrame(()=>requestAnimationFrame(forcePair));
+    }
+  });
+  new MutationObserver(forcePair).observe(document.body,{
+    subtree:true,attributes:true,attributeFilter:["class","style","hidden","aria-expanded"]
+  });
+  forcePair();
 });
 </script>
 
