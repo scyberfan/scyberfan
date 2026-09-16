@@ -21,7 +21,7 @@ function injectHeader(){
  .site-menu-button.is-open .site-menu-icon span:nth-child(3){top:5.75px;transform:rotate(-45deg)}
  .site-menu{position:absolute;right:max(12px,env(safe-area-inset-right));top:48px;width:184px;padding:6px;border-radius:12px;background:rgba(250,247,242,.97);border:1px solid rgba(119,105,94,.28);box-shadow:0 10px 28px rgba(55,45,38,.17);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);opacity:0;visibility:hidden;transform:translateY(-5px) scale(.98);transform-origin:top right;transition:.18s ease}
  .site-menu.is-open{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
- .site-menu a{display:block;padding:11px 12px;color:#5b524c;text-decoration:none;font-size:11px;letter-spacing:.05em;border-radius:8px;border-bottom:1px solid rgba(119,105,94,.10)}
+ .site-menu a{display:block;padding:11px 12px;color:#5b524c;text-decoration:none;font-size:11px;letter-spacing:.05em;border-radius:8px}
  .site-menu a:last-child{border-bottom:0}.site-menu a[aria-current="page"]{background:rgba(222,214,204,.58);font-weight:700}
  .site-menu a.is-disabled{opacity:.38;pointer-events:none;cursor:default}
  @media(max-width:560px){.site-fixed-header{height:42px}.site-menu-button{right:max(9px,env(safe-area-inset-right));width:36px;height:32px}.site-menu{right:max(9px,env(safe-area-inset-right));top:44px;width:172px}}`;
