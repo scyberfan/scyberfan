@@ -780,10 +780,10 @@ header .official-summary{
   </div>
 
   <div class="benefits-view-tabs" role="tablist" aria-label="早見表の表示切り替え">
-    <button type="button" class="benefits-view-tab is-active" id="ticketTab" role="tab" aria-selected="true">特典券から見る</button>
-    <button type="button" class="benefits-view-tab" id="cdTab" role="tab" aria-selected="false">CD枚数から見る</button>
+    <button type="button" class="benefits-view-tab is-active" id="cdTab" role="tab" aria-selected="true">CD枚数から見る</button>
+    <button type="button" class="benefits-view-tab" id="ticketTab" role="tab" aria-selected="false">特典券から見る</button>
   </div>
-  <div class="benefits-view" id="ticketView">
+  <div class="benefits-view" id="ticketView" hidden>
   <div class="table-caption">特典券 早見表</div>
   <div class="benefits-table-scroll">
     <table class="benefits-table">
@@ -809,7 +809,7 @@ header .official-summary{
   <p class="table-footnote">色付きの行は、CDを5枚単位で購入した場合の目安です。</p>
   </div>
 
-<div class="benefits-view" id="cdView" hidden>
+<div class="benefits-view" id="cdView">
   <div class="table-caption">CD枚数 早見表</div>
   <div class="benefits-table-scroll">
     <table class="benefits-table cd-table">
@@ -898,6 +898,7 @@ document.addEventListener("DOMContentLoaded", function(){
   }
   ticketTab?.addEventListener("click",()=>switchView("ticket"));
   cdTab?.addEventListener("click",()=>switchView("cd"));
+  switchView("cd");
 
   function setupStepper(table, controls, moreBtn, closeBtn){
     if(!table || !controls || !moreBtn || !closeBtn) return;
