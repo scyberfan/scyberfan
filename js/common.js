@@ -74,10 +74,9 @@ function renderSchedule(){
       : `<div class="${classes}">${content}</div>`;
   }).join("");
 
-  /* 初回表示だけ、トップを見せてから次回公演を中央へスクロール */
+  /* index.html表示時は毎回、トップを見せてから次回公演を中央へスクロール */
   const next=list.querySelector(".card.next");
-  if(next && !sessionStorage.getItem("zerojuriAutoScrolled")){
-    sessionStorage.setItem("zerojuriAutoScrolled","1");
+  if(next){
     setTimeout(()=>next.scrollIntoView({behavior:"smooth",block:"center"}),450);
   }
 }
