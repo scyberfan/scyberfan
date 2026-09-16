@@ -445,7 +445,36 @@ header .official-summary{
   border-bottom:1px solid rgba(126,111,98,.28);
 }
 
-</style></head>
+</style>
+<style>
+/* ===== BENEFITS V11 ===== */
+
+/* 金額欄の付与枚数注記を少し大きくして読みやすく */
+.ticket-grant-note{
+  font-size:clamp(8px,2.15vw,10px) !important;
+  line-height:1.35 !important;
+}
+
+/* 2つの操作ボタンが同時に表示されるときだけ横並び */
+#stage2Controls.is-paired,
+#stage3Controls.is-paired{
+  display:inline-flex !important;
+  width:calc(50% - 5px);
+  vertical-align:top;
+  margin-top:10px;
+}
+#stage2Controls.is-paired{margin-right:6px;}
+#stage3Controls.is-paired{margin-left:0;}
+#stage2Controls.is-paired .benefits-more-btn,
+#stage3Controls.is-paired .benefits-more-btn{
+  width:100%;
+  min-width:0;
+  padding-left:8px;
+  padding-right:8px;
+}
+</style>
+
+</head>
 <body data-page="benefits"><main>
 <header class="hero">
 <div class="hero-visual">
@@ -473,7 +502,7 @@ header .official-summary{
   <div class="benefits-table-scroll">
     <table class="benefits-table">
       <thead><tr><th>特典券枚数</th><th>写メ</th><th>握手</th><th>CD枚数</th><th>金額</th></tr></thead>
-      <tbody><tr><td>1枚</td><td>1枚</td><td>0:20</td><td>1枚</td><td>¥1,200</td></tr><tr><td>2枚</td><td>2枚</td><td>0:40</td><td>2枚</td><td>¥2,400</td></tr><tr><td>3枚</td><td>3枚</td><td>1:00</td><td>3枚</td><td>¥3,600</td></tr><tr><td>4枚</td><td>4枚</td><td>1:20</td><td>4枚</td><td>¥4,800</td></tr><tr class="bonus-ticket-row"><td>5枚</td><td>5枚</td><td>1:40</td><td>5枚</td><td>¥6,000<span class="amount-ticket-note">※特典券6枚付与</span></td></tr><tr class="value-row six-ticket-row"><td>6枚</td><td>6枚</td><td>2:00</td><td>5枚</td><td><strong class="six-ticket-amount">¥6,000</strong></td></tr><tr><td>7枚</td><td>7枚</td><td>2:20</td><td>6枚</td><td>¥7,200</td></tr><tr><td>8枚</td><td>8枚</td><td>2:40</td><td>7枚</td><td>¥8,400</td></tr><tr><td>9枚</td><td>9枚</td><td>3:00</td><td>8枚</td><td>¥9,600</td></tr><tr><td>10枚</td><td>10枚</td><td>3:20</td><td>9枚</td><td>¥10,800</td></tr><tr class="bonus-ticket-row"><td>11枚</td><td>11枚</td><td>3:40</td><td>10枚</td><td>¥12,000<span class="amount-ticket-note">※特典券12枚付与</span></td></tr><tr class="value-row six-ticket-row"><td>12枚</td><td>12枚</td><td>4:00</td><td>10枚</td><td><strong class="six-ticket-amount">¥12,000</strong></td></tr><tr><td>13枚</td><td>13枚</td><td>4:20</td><td>11枚</td><td>¥13,200</td></tr><tr><td>14枚</td><td>14枚</td><td>4:40</td><td>12枚</td><td>¥14,400</td></tr><tr><td>15枚</td><td>15枚</td><td>5:00</td><td>13枚</td><td>¥15,600</td></tr><tr><td>16枚</td><td>16枚</td><td>5:20</td><td>14枚</td><td>¥16,800</td></tr><tr class="bonus-ticket-row"><td>17枚</td><td>17枚</td><td>5:40</td><td>15枚</td><td>¥18,000<span class="amount-ticket-note">※特典券18枚付与</span></td></tr><tr class="value-row six-ticket-row"><td>18枚</td><td>18枚</td><td>6:00</td><td>15枚</td><td><strong class="six-ticket-amount">¥18,000</strong></td></tr><tr class="stage2-row"><td>19枚</td><td>19枚</td><td>6:20</td><td>16枚</td><td>¥19,200</td></tr><tr class="stage2-row"><td>20枚</td><td>20枚</td><td>6:40</td><td>17枚</td><td>¥20,400</td></tr><tr class="stage2-row"><td>21枚</td><td>21枚</td><td>7:00</td><td>18枚</td><td>¥21,600</td></tr><tr class="stage2-row"><td>22枚</td><td>22枚</td><td>7:20</td><td>19枚</td><td>¥22,800</td></tr><tr class="bonus-ticket-row stage2-row"><td>23枚</td><td>23枚</td><td>7:40</td><td>20枚</td><td>¥24,000<span class="amount-ticket-note">※特典券24枚付与</span></td></tr><tr class="value-row six-ticket-row stage2-row"><td>24枚</td><td>24枚</td><td>8:00</td><td>20枚</td><td><strong class="six-ticket-amount">¥24,000</strong></td></tr><tr class="stage2-row"><td>25枚</td><td>25枚</td><td>8:20</td><td>21枚</td><td>¥25,200</td></tr><tr class="stage2-row"><td>26枚</td><td>26枚</td><td>8:40</td><td>22枚</td><td>¥26,400</td></tr><tr class="stage2-row"><td>27枚</td><td>27枚</td><td>9:00</td><td>23枚</td><td>¥27,600</td></tr><tr class="stage2-row"><td>28枚</td><td>28枚</td><td>9:20</td><td>24枚</td><td>¥28,800</td></tr><tr class="bonus-ticket-row stage2-row"><td>29枚</td><td>29枚</td><td>9:40</td><td>25枚</td><td>¥30,000<span class="amount-ticket-note">※特典券30枚付与</span></td></tr><tr class="value-row six-ticket-row stage2-row"><td>30枚</td><td>30枚</td><td>10:00</td><td>25枚</td><td><strong class="six-ticket-amount">¥30,000</strong></td></tr><tr class="stage3-row"><td>31枚</td><td>31枚</td><td>10:20</td><td>26枚</td><td>¥31,200</td></tr><tr class="stage3-row"><td>32枚</td><td>32枚</td><td>10:40</td><td>27枚</td><td>¥32,400</td></tr><tr class="stage3-row"><td>33枚</td><td>33枚</td><td>11:00</td><td>28枚</td><td>¥33,600</td></tr><tr class="stage3-row"><td>34枚</td><td>34枚</td><td>11:20</td><td>29枚</td><td>¥34,800</td></tr><tr class="bonus-ticket-row stage3-row"><td>35枚</td><td>35枚</td><td>11:40</td><td>30枚</td><td>¥36,000<span class="amount-ticket-note">※特典券36枚付与</span></td></tr><tr class="value-row six-ticket-row stage3-row"><td>36枚</td><td>36枚</td><td>12:00</td><td>30枚</td><td><strong class="six-ticket-amount">¥36,000</strong></td></tr><tr class="stage3-row"><td>37枚</td><td>37枚</td><td>12:20</td><td>31枚</td><td>¥37,200</td></tr><tr class="stage3-row"><td>38枚</td><td>38枚</td><td>12:40</td><td>32枚</td><td>¥38,400</td></tr><tr class="stage3-row"><td>39枚</td><td>39枚</td><td>13:00</td><td>33枚</td><td>¥39,600</td></tr><tr class="stage3-row"><td>40枚</td><td>40枚</td><td>13:20</td><td>34枚</td><td>¥40,800</td></tr><tr class="bonus-ticket-row stage3-row"><td>41枚</td><td>41枚</td><td>13:40</td><td>35枚</td><td>¥42,000<span class="amount-ticket-note">※特典券42枚付与</span></td></tr><tr class="value-row six-ticket-row stage3-row"><td>42枚</td><td>42枚</td><td>14:00</td><td>35枚</td><td><strong class="six-ticket-amount">¥42,000</strong></td></tr><tr class="stage3-row"><td>43枚</td><td>43枚</td><td>14:20</td><td>36枚</td><td>¥43,200</td></tr><tr class="stage3-row"><td>44枚</td><td>44枚</td><td>14:40</td><td>37枚</td><td>¥44,400</td></tr><tr class="stage3-row"><td>45枚</td><td>45枚</td><td>15:00</td><td>38枚</td><td>¥45,600</td></tr><tr class="stage3-row"><td>46枚</td><td>46枚</td><td>15:20</td><td>39枚</td><td>¥46,800</td></tr><tr class="bonus-ticket-row stage3-row"><td>47枚</td><td>47枚</td><td>15:40</td><td>40枚</td><td>¥48,000<span class="amount-ticket-note">※特典券48枚付与</span></td></tr><tr class="value-row six-ticket-row stage3-row"><td>48枚</td><td>48枚</td><td>16:00</td><td>40枚</td><td><strong class="six-ticket-amount">¥48,000</strong></td></tr><tr class="stage3-row"><td>49枚</td><td>49枚</td><td>16:20</td><td>41枚</td><td>¥49,200</td></tr><tr class="stage3-row"><td>50枚</td><td>50枚</td><td>16:40</td><td>42枚</td><td>¥50,400</td></tr><tr class="stage3-row"><td>51枚</td><td>51枚</td><td>17:00</td><td>43枚</td><td>¥51,600</td></tr><tr class="stage3-row"><td>52枚</td><td>52枚</td><td>17:20</td><td>44枚</td><td>¥52,800</td></tr><tr class="bonus-ticket-row stage3-row"><td>53枚</td><td>53枚</td><td>17:40</td><td>45枚</td><td>¥54,000<span class="amount-ticket-note">※特典券54枚付与</span></td></tr><tr class="value-row six-ticket-row stage3-row"><td>54枚</td><td>54枚</td><td>18:00</td><td>45枚</td><td><strong class="six-ticket-amount">¥54,000</strong></td></tr><tr class="stage3-row"><td>55枚</td><td>55枚</td><td>18:20</td><td>46枚</td><td>¥55,200</td></tr><tr class="stage3-row"><td>56枚</td><td>56枚</td><td>18:40</td><td>47枚</td><td>¥56,400</td></tr><tr class="stage3-row"><td>57枚</td><td>57枚</td><td>19:00</td><td>48枚</td><td>¥57,600</td></tr><tr class="stage3-row"><td>58枚</td><td>58枚</td><td>19:20</td><td>49枚</td><td>¥58,800</td></tr><tr class="bonus-ticket-row stage3-row"><td>59枚</td><td>59枚</td><td>19:40</td><td>50枚</td><td>¥60,000<span class="amount-ticket-note">※特典券60枚付与</span></td></tr><tr class="value-row six-ticket-row stage3-row"><td>60枚</td><td>60枚</td><td>20:00</td><td>50枚</td><td><strong class="six-ticket-amount">¥60,000</strong></td></tr></tbody>
+      <tbody><tr><td>1枚</td><td>1枚</td><td>0:20</td><td>1枚</td><td>¥1,200</td></tr><tr><td>2枚</td><td>2枚</td><td>0:40</td><td>2枚</td><td>¥2,400</td></tr><tr><td>3枚</td><td>3枚</td><td>1:00</td><td>3枚</td><td>¥3,600</td></tr><tr><td>4枚</td><td>4枚</td><td>1:20</td><td>4枚</td><td>¥4,800</td></tr><tr class="bonus-ticket-row"><td>5枚</td><td>5枚</td><td>1:40</td><td>5枚</td><td>¥6,000<span class="amount-ticket-note"><span class="ticket-grant-note">※特典券6枚付与</span></span></td></tr><tr class="value-row six-ticket-row"><td>6枚</td><td>6枚</td><td>2:00</td><td>5枚</td><td><strong class="six-ticket-amount">¥6,000</strong></td></tr><tr><td>7枚</td><td>7枚</td><td>2:20</td><td>6枚</td><td>¥7,200</td></tr><tr><td>8枚</td><td>8枚</td><td>2:40</td><td>7枚</td><td>¥8,400</td></tr><tr><td>9枚</td><td>9枚</td><td>3:00</td><td>8枚</td><td>¥9,600</td></tr><tr><td>10枚</td><td>10枚</td><td>3:20</td><td>9枚</td><td>¥10,800</td></tr><tr class="bonus-ticket-row"><td>11枚</td><td>11枚</td><td>3:40</td><td>10枚</td><td>¥12,000<span class="amount-ticket-note"><span class="ticket-grant-note">※特典券12枚付与</span></span></td></tr><tr class="value-row six-ticket-row"><td>12枚</td><td>12枚</td><td>4:00</td><td>10枚</td><td><strong class="six-ticket-amount">¥12,000</strong></td></tr><tr><td>13枚</td><td>13枚</td><td>4:20</td><td>11枚</td><td>¥13,200</td></tr><tr><td>14枚</td><td>14枚</td><td>4:40</td><td>12枚</td><td>¥14,400</td></tr><tr><td>15枚</td><td>15枚</td><td>5:00</td><td>13枚</td><td>¥15,600</td></tr><tr><td>16枚</td><td>16枚</td><td>5:20</td><td>14枚</td><td>¥16,800</td></tr><tr class="bonus-ticket-row"><td>17枚</td><td>17枚</td><td>5:40</td><td>15枚</td><td>¥18,000<span class="amount-ticket-note"><span class="ticket-grant-note">※特典券18枚付与</span></span></td></tr><tr class="value-row six-ticket-row"><td>18枚</td><td>18枚</td><td>6:00</td><td>15枚</td><td><strong class="six-ticket-amount">¥18,000</strong></td></tr><tr class="stage2-row"><td>19枚</td><td>19枚</td><td>6:20</td><td>16枚</td><td>¥19,200</td></tr><tr class="stage2-row"><td>20枚</td><td>20枚</td><td>6:40</td><td>17枚</td><td>¥20,400</td></tr><tr class="stage2-row"><td>21枚</td><td>21枚</td><td>7:00</td><td>18枚</td><td>¥21,600</td></tr><tr class="stage2-row"><td>22枚</td><td>22枚</td><td>7:20</td><td>19枚</td><td>¥22,800</td></tr><tr class="bonus-ticket-row stage2-row"><td>23枚</td><td>23枚</td><td>7:40</td><td>20枚</td><td>¥24,000<span class="amount-ticket-note"><span class="ticket-grant-note">※特典券24枚付与</span></span></td></tr><tr class="value-row six-ticket-row stage2-row"><td>24枚</td><td>24枚</td><td>8:00</td><td>20枚</td><td><strong class="six-ticket-amount">¥24,000</strong></td></tr><tr class="stage2-row"><td>25枚</td><td>25枚</td><td>8:20</td><td>21枚</td><td>¥25,200</td></tr><tr class="stage2-row"><td>26枚</td><td>26枚</td><td>8:40</td><td>22枚</td><td>¥26,400</td></tr><tr class="stage2-row"><td>27枚</td><td>27枚</td><td>9:00</td><td>23枚</td><td>¥27,600</td></tr><tr class="stage2-row"><td>28枚</td><td>28枚</td><td>9:20</td><td>24枚</td><td>¥28,800</td></tr><tr class="bonus-ticket-row stage2-row"><td>29枚</td><td>29枚</td><td>9:40</td><td>25枚</td><td>¥30,000<span class="amount-ticket-note"><span class="ticket-grant-note">※特典券30枚付与</span></span></td></tr><tr class="value-row six-ticket-row stage2-row"><td>30枚</td><td>30枚</td><td>10:00</td><td>25枚</td><td><strong class="six-ticket-amount">¥30,000</strong></td></tr><tr class="stage3-row"><td>31枚</td><td>31枚</td><td>10:20</td><td>26枚</td><td>¥31,200</td></tr><tr class="stage3-row"><td>32枚</td><td>32枚</td><td>10:40</td><td>27枚</td><td>¥32,400</td></tr><tr class="stage3-row"><td>33枚</td><td>33枚</td><td>11:00</td><td>28枚</td><td>¥33,600</td></tr><tr class="stage3-row"><td>34枚</td><td>34枚</td><td>11:20</td><td>29枚</td><td>¥34,800</td></tr><tr class="bonus-ticket-row stage3-row"><td>35枚</td><td>35枚</td><td>11:40</td><td>30枚</td><td>¥36,000<span class="amount-ticket-note"><span class="ticket-grant-note">※特典券36枚付与</span></span></td></tr><tr class="value-row six-ticket-row stage3-row"><td>36枚</td><td>36枚</td><td>12:00</td><td>30枚</td><td><strong class="six-ticket-amount">¥36,000</strong></td></tr><tr class="stage3-row"><td>37枚</td><td>37枚</td><td>12:20</td><td>31枚</td><td>¥37,200</td></tr><tr class="stage3-row"><td>38枚</td><td>38枚</td><td>12:40</td><td>32枚</td><td>¥38,400</td></tr><tr class="stage3-row"><td>39枚</td><td>39枚</td><td>13:00</td><td>33枚</td><td>¥39,600</td></tr><tr class="stage3-row"><td>40枚</td><td>40枚</td><td>13:20</td><td>34枚</td><td>¥40,800</td></tr><tr class="bonus-ticket-row stage3-row"><td>41枚</td><td>41枚</td><td>13:40</td><td>35枚</td><td>¥42,000<span class="amount-ticket-note"><span class="ticket-grant-note">※特典券42枚付与</span></span></td></tr><tr class="value-row six-ticket-row stage3-row"><td>42枚</td><td>42枚</td><td>14:00</td><td>35枚</td><td><strong class="six-ticket-amount">¥42,000</strong></td></tr><tr class="stage3-row"><td>43枚</td><td>43枚</td><td>14:20</td><td>36枚</td><td>¥43,200</td></tr><tr class="stage3-row"><td>44枚</td><td>44枚</td><td>14:40</td><td>37枚</td><td>¥44,400</td></tr><tr class="stage3-row"><td>45枚</td><td>45枚</td><td>15:00</td><td>38枚</td><td>¥45,600</td></tr><tr class="stage3-row"><td>46枚</td><td>46枚</td><td>15:20</td><td>39枚</td><td>¥46,800</td></tr><tr class="bonus-ticket-row stage3-row"><td>47枚</td><td>47枚</td><td>15:40</td><td>40枚</td><td>¥48,000<span class="amount-ticket-note"><span class="ticket-grant-note">※特典券48枚付与</span></span></td></tr><tr class="value-row six-ticket-row stage3-row"><td>48枚</td><td>48枚</td><td>16:00</td><td>40枚</td><td><strong class="six-ticket-amount">¥48,000</strong></td></tr><tr class="stage3-row"><td>49枚</td><td>49枚</td><td>16:20</td><td>41枚</td><td>¥49,200</td></tr><tr class="stage3-row"><td>50枚</td><td>50枚</td><td>16:40</td><td>42枚</td><td>¥50,400</td></tr><tr class="stage3-row"><td>51枚</td><td>51枚</td><td>17:00</td><td>43枚</td><td>¥51,600</td></tr><tr class="stage3-row"><td>52枚</td><td>52枚</td><td>17:20</td><td>44枚</td><td>¥52,800</td></tr><tr class="bonus-ticket-row stage3-row"><td>53枚</td><td>53枚</td><td>17:40</td><td>45枚</td><td>¥54,000<span class="amount-ticket-note"><span class="ticket-grant-note">※特典券54枚付与</span></span></td></tr><tr class="value-row six-ticket-row stage3-row"><td>54枚</td><td>54枚</td><td>18:00</td><td>45枚</td><td><strong class="six-ticket-amount">¥54,000</strong></td></tr><tr class="stage3-row"><td>55枚</td><td>55枚</td><td>18:20</td><td>46枚</td><td>¥55,200</td></tr><tr class="stage3-row"><td>56枚</td><td>56枚</td><td>18:40</td><td>47枚</td><td>¥56,400</td></tr><tr class="stage3-row"><td>57枚</td><td>57枚</td><td>19:00</td><td>48枚</td><td>¥57,600</td></tr><tr class="stage3-row"><td>58枚</td><td>58枚</td><td>19:20</td><td>49枚</td><td>¥58,800</td></tr><tr class="bonus-ticket-row stage3-row"><td>59枚</td><td>59枚</td><td>19:40</td><td>50枚</td><td>¥60,000<span class="amount-ticket-note"><span class="ticket-grant-note">※特典券60枚付与</span></span></td></tr><tr class="value-row six-ticket-row stage3-row"><td>60枚</td><td>60枚</td><td>20:00</td><td>50枚</td><td><strong class="six-ticket-amount">¥60,000</strong></td></tr></tbody>
     </table>
     <div class="benefits-fade" aria-hidden="true"></div>
   </div>
@@ -484,7 +513,7 @@ header .official-summary{
   </div>
   <div class="benefits-more-wrap stage3-controls" id="stage3Controls">
     <button type="button" class="benefits-more-btn benefits-more-secondary" id="showStage3Btn" aria-expanded="false">
-      31枚以上も確認する <span>⌄</span>
+      もっと表示する <span>⌄</span>
     </button>
   </div>
   <p class="table-footnote">色付きの行は、CDを5枚単位で購入した場合の目安です。</p>
@@ -553,7 +582,7 @@ header .official-summary{
       btn2.innerHTML='もっと表示する <span>⌄</span>';
       btn3.classList.remove("is-expanded");
       btn3.setAttribute("aria-expanded","false");
-      btn3.innerHTML='31枚以上も確認する <span>⌄</span>';
+      btn3.innerHTML='もっと表示する <span>⌄</span>';
     }
   });
 
@@ -562,11 +591,57 @@ header .official-summary{
     table.classList.toggle("show-stage3",open);
     btn3.classList.toggle("is-expanded",open);
     btn3.setAttribute("aria-expanded",open ? "true":"false");
-    btn3.innerHTML=(open ? '31枚以上を閉じる ' : '31枚以上も確認する ')+'<span>⌄</span>';
+    btn3.innerHTML=(open ? '31枚以上を閉じる ' : 'もっと表示する ')+'<span>⌄</span>';
   });
 })();
 </script>
 
 <script src="js/events.js"></script>
 <script src="js/common.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  const s2 = document.getElementById("stage2Controls");
+  const s3 = document.getElementById("stage3Controls");
+  const b2 = document.getElementById("showStage2Btn");
+  const b3 = document.getElementById("showStage3Btn");
+
+  function setLabel(btn){
+    if(!btn) return;
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    btn.innerHTML = expanded
+      ? '閉じる <span>⌃</span>'
+      : 'もっと表示する <span>⌄</span>';
+  }
+
+  function visible(el){
+    if(!el) return false;
+    const cs = getComputedStyle(el);
+    return !el.hidden && cs.display !== "none" && cs.visibility !== "hidden";
+  }
+
+  function sync(){
+    setLabel(b2);
+    setLabel(b3);
+    const paired = visible(s2) && visible(s3);
+    if(s2) s2.classList.toggle("is-paired", paired);
+    if(s3) s3.classList.toggle("is-paired", paired);
+  }
+
+  [b2,b3].forEach(btn => {
+    if(btn) btn.addEventListener("click", function(){ setTimeout(sync, 0); });
+  });
+
+  const observer = new MutationObserver(sync);
+  [s2,s3,b2,b3].forEach(el => {
+    if(el) observer.observe(el, {
+      attributes:true,
+      attributeFilter:["class","style","hidden","aria-expanded"]
+    });
+  });
+
+  sync();
+});
+</script>
+
 </body></html>
