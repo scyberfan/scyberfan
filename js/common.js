@@ -28,7 +28,7 @@ function injectHeader(){
  document.head.appendChild(style);
  const page=document.body.dataset.page||"";
  const h=document.createElement("div");h.className="site-fixed-header";
- h.innerHTML=`<div class="site-fixed-header-inner"><button class="site-menu-button" type="button" aria-label="メニューを開く" aria-expanded="false"><span class="site-menu-icon" aria-hidden="true"><span></span><span></span><span></span></span></button><nav class="site-menu" aria-label="サイトメニュー"><a href="index.html"${page==="schedule"?' aria-current="page"':""}>スケジュール</a><a class="is-disabled" aria-disabled="true" tabindex="-1">特典内容早見表</a></nav></div>`;
+ h.innerHTML=`<div class="site-fixed-header-inner"><button class="site-menu-button" type="button" aria-label="メニューを開く" aria-expanded="false"><span class="site-menu-icon" aria-hidden="true"><span></span><span></span><span></span></span></button><nav class="site-menu" aria-label="サイトメニュー"><a href="index.html"${page==="schedule"?' aria-current="page"':""}>スケジュール</a><a href="benefits.html">特典内容早見表</a></nav></div>`;
  document.body.prepend(h);
  const b=h.querySelector(".site-menu-button"),m=h.querySelector(".site-menu");
  const close=()=>{m.classList.remove("is-open");b.classList.remove("is-open");b.setAttribute("aria-expanded","false");b.setAttribute("aria-label","メニューを開く")};
