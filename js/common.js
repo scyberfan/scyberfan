@@ -24,6 +24,9 @@ function injectHeader(){
  .site-menu a{display:block;padding:11px 12px;color:#5b524c;text-decoration:none;font-size:11px;letter-spacing:.05em;border-radius:8px;box-shadow:none;border-bottom:none}
  .site-menu a:last-child{border-bottom:0}.site-menu a[aria-current="page"]{background:rgba(222,214,204,.58);font-weight:700}
  .site-menu a.is-disabled{opacity:.38;pointer-events:none;cursor:default}
+ .card.past{opacity:.84}
+ .card.past:after{display:none!important}
+ .schedule-ended-badge{position:absolute;right:8px;top:7px;z-index:2;background:rgba(109,98,90,.72);color:#fff;padding:3px 8px;border-radius:20px;font-size:9px;line-height:1.3;letter-spacing:.05em}
  @media(max-width:560px){.site-fixed-header{height:42px}.site-menu-button{right:max(9px,env(safe-area-inset-right));width:36px;height:32px}.site-menu{right:max(9px,env(safe-area-inset-right));top:44px;width:172px}}`;
  document.head.appendChild(style);
  const page=document.body.dataset.page||"";
@@ -64,20 +67,34 @@ function renderSchedule(){
         <span>/ 集合 ${esc(x.meeting||"未定")}</span>
       </div>`).join("");
     const content=`
+      ${past?`<span class="schedule-ended-badge">終了</span>`:""}
       <div class="datebox"><small>${esc(y)}.</small><strong>${Number(m)}.${Number(d)}</strong><em class="w-${esc(e.weekday)}">${esc(e.weekday)}</em></div>
       <div class="body">${sessions}<div class="meta">
         <div><label>場所</label><p>${esc(e.place||"未定")}</p></div>
-        <div class="sale"><label>販売</label><p>${esc(e.sales||"未定")}</p></div>
+        <div class="sale"><label>優先エリア</label><p>${esc(e.priorityArea||"未定")}</p></div>
+        ${e.note?`<div><label>備考</label><p>${esc(e.note)}</p></div>`:""}
       </div></div>`;
     return e.url
       ? `<a class="${classes}" href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">${content}</a>`
       : `<div class="${classes}">${content}</div>`;
   }).join("");
 
-  /* index.html表示時は毎回、トップを見せてから次回公演を中央へスクロール */
+  /* index.html表示時は毎回、次回公演が画面中央に来るまで0.8秒でスクロール */
   const next=list.querySelector(".card.next");
   if(next){
-    setTimeout(()=>next.scrollIntoView({behavior:"smooth",block:"center"}),450);
+    setTimeout(()=>{
+      const startY=window.scrollY;
+      const targetY=Math.max(0,next.getBoundingClientRect().top+window.scrollY-(window.innerHeight-next.offsetHeight)/2);
+      const duration=800;
+      const startTime=performance.now();
+      const ease=t=>1-Math.pow(1-t,3);
+      const step=now=>{
+        const t=Math.min(1,(now-startTime)/duration);
+        window.scrollTo(0,startY+(targetY-startY)*ease(t));
+        if(t<1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    },120);
   }
 }
 
