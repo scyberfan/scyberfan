@@ -236,6 +236,34 @@ header .official-summary{margin-top:16px}
   header .official-summary{margin-top:15px}
 }
 
+/* ===== BENEFITS.HTML EXACT MATCH: REQUESTED TWO ITEMS ONLY ===== */
+
+/* 公式案内ボタン：benefits.html と同じ指定 */
+.official-summary{
+  width:auto !important;
+  max-width:82% !important;
+  padding:8px 16px !important;
+  font-size:10px !important;
+  line-height:1.35 !important;
+  border-radius:2px;
+}
+
+/* イベント一覧直前：benefits.html と同じ背景表示用領域 */
+.schedule-gap{
+  height:27px !important;
+}
+
+@media(max-width:560px){
+  .official-summary{
+    max-width:80% !important;
+    padding:7px 13px !important;
+    font-size:9px !important;
+  }
+  .schedule-gap{
+    height:25px !important;
+  }
+}
+
 </style></head>
 <body data-page="schedule"><main>
 <header class="hero">
@@ -247,6 +275,7 @@ header .official-summary{margin-top:16px}
 <a class="official-summary" href="https://aosai-fc.bitfan.id/contents/420854" target="_blank" rel="noopener noreferrer">公式｜リリースイベント総合案内（9/18更新） <span>↗</span></a>
 <p class="note">各スケジュールをタップすると公式案内ページを開きます</p>
 </header>
+<div class="schedule-gap" aria-hidden="true"></div>
 <section class="list" id="scheduleList" aria-label="リリースイベントスケジュール"></section>
 <section class="disclaimer">
 このページはファンが作成した<strong>非公式ファンサイト</strong>です。青春CYBERおよび関係各社とは関係ありません。<br>
