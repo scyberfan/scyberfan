@@ -67,7 +67,7 @@ function renderSchedule(){
       <div class="datebox"><small>${esc(y)}.</small><strong>${Number(m)}.${Number(d)}</strong><em class="w-${esc(e.weekday)}">${esc(e.weekday)}</em></div>
       <div class="body">${sessions}<div class="meta">
         <div><label>場所</label><p>${esc(e.place||"未定")}</p></div>
-        <div class="sale"><label>優先エリア</label><p>${esc(e.priorityArea||"未定")}</p></div>
+        <div class="sale"><label>優先<br>エリア</label><p>${esc(e.priorityArea||"未定")}${(e.priorityArea||"").includes("リストバンド")?` <button type="button" class="priority-info-btn" aria-label="リストバンドについて" aria-expanded="false">ⓘ</button><span class="priority-info-note" hidden>整理番号付きのリストバンドを配布します。</span>`:""}</p></div>
         ${e.note?`<div><label>備考</label><p>${esc(e.note)}</p></div>`:""}
       </div></div>`;
     return e.url
@@ -86,4 +86,10 @@ function starts(){const a=[];EVENTS.forEach(e=>e.sessions.forEach(x=>{if(x.start
 function countdown(){const root=document.getElementById("fixedZerojuriCountdown");if(!root)return;const nums=["fcdD","fcdH","fcdM","fcdS"].map(id=>document.getElementById(id)),next=document.getElementById("fcdNext"),list=starts(),pad=n=>String(n).padStart(2,"0");function tick(){const now=Date.now(),n=list.find(x=>x.d.getTime()>now);if(!n){if(next)next.textContent="次回の開催情報は公式案内をご確認ください";return}let s=Math.max(0,Math.floor((n.d-now)/1000)),d=Math.floor(s/86400);s%=86400;let h=Math.floor(s/3600);s%=3600;let m=Math.floor(s/60);s%=60;[d,h,m,s].forEach((v,i)=>nums[i]&&(nums[i].textContent=pad(v)));if(next)next.textContent="NEXT "+n.label}tick();setInterval(tick,1000)}
 
 document.addEventListener("DOMContentLoaded",()=>{injectHeader();renderSchedule();countdown()});
+})();
+;(()=>{if(document.getElementById("priority-area-info-style"))return;
+const st=document.createElement("style");st.id="priority-area-info-style";
+st.textContent=".priority-info-btn{appearance:none;-webkit-appearance:none;border:0;background:transparent;padding:0 2px;margin:0;color:#8f7d70;font:inherit;font-size:12px;line-height:1;vertical-align:baseline;cursor:pointer}.priority-info-note{display:block;margin-top:4px;font-size:9px;line-height:1.5;color:#7d7068}.priority-info-note[hidden]{display:none}";
+document.head.appendChild(st);
+document.addEventListener("click",e=>{const b=e.target.closest(".priority-info-btn");if(!b)return;const n=b.nextElementSibling;if(!n||!n.classList.contains("priority-info-note"))return;const open=n.hasAttribute("hidden");if(open)n.removeAttribute("hidden");else n.setAttribute("hidden","");b.setAttribute("aria-expanded",open?"true":"false")});
 })();
