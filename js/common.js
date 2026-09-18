@@ -67,7 +67,8 @@ function renderSchedule(){
       <div class="datebox"><small>${esc(y)}.</small><strong>${Number(m)}.${Number(d)}</strong><em class="w-${esc(e.weekday)}">${esc(e.weekday)}</em></div>
       <div class="body">${sessions}<div class="meta">
         <div><label>場所</label><p>${esc(e.place||"未定")}</p></div>
-        <div class="sale"><label>販売</label><p>${esc(e.sales||"未定")}</p></div>
+        <div class="sale"><label>優先エリア</label><p>${esc(e.priorityArea||"未定")}</p></div>
+        ${e.note?`<div><label>備考</label><p>${esc(e.note)}</p></div>`:""}
       </div></div>`;
     return e.url
       ? `<a class="${classes}" href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">${content}</a>`
