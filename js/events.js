@@ -77,7 +77,8 @@ window.ZEROJURI_EVENTS = [
         "meeting": "15:15"
       }
     ],
-    "priorityArea": "リストバンド｜当日14:00〜"
+    "priorityArea": "リストバンド｜当日14:00〜",
+    "note": "台風接近のため中止。16:00-19:00TikTok配信あり。"
   },
   {
     "date": "2026-09-23",
